@@ -15,10 +15,10 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
-# if __name__ == '__main__':
-#     logging.info("Logging has started.")
-#     logging.info("This log file is stored inside the 'logs' folder.")
+if __name__ == '__main__':
+    logging.info("Logging has started.")
+    logging.info("This log file is stored inside the 'logs' folder.")
     
-#     print(f"Log directory: {logs_path}")
-#     print(f"Log file path: {LOG_FILE_PATH}")
+    print(f"Log directory: {logs_path}")
+    print(f"Log file path: {LOG_FILE_PATH}")
     
