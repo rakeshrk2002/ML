@@ -7,6 +7,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+# from src.components.data_transformation import DataTransformation,DataTransformation_config
+
+# Data_Ingestion_Config class is created to create train,test and data.csv files in the specified location ("artifacts" folder)
 @dataclass
 class Data_Ingestion_Config:
     train_data_path: str = os.path.join("artifacts","train.csv")
@@ -48,5 +51,10 @@ class Data_Ingestion:
         
 if __name__=="__main__":
     obj = Data_Ingestion()
-    obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion()
+    
+    from src.components.data_transformation import DataTransformation
+    
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_data,test_data)
     
