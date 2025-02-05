@@ -52,8 +52,8 @@ class DataTransformation:
                 ]
             )
             
-            logging.info("Numerical columns Standard scaler is completed")
-            logging.info("Categorical columns OneHot encoding is completed")
+            logging.info(f"Numerical columns Standard scaler is completed : {num_features}")
+            logging.info(f"Categorical columns OneHot encoding is completed : {cat_features}")
             
             preprocessor = ColumnTransformer(transformers=[
                 ('num_pipeline',num_pipeline,num_features),
