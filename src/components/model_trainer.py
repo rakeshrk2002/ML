@@ -28,7 +28,7 @@ class Model_trainer:
         self.model_config = model_trainer_Config()
         
     def randomized_search(self, model, param_distributions, X_train, y_train, n_iter=20):
-        """Perform hyperparameter tuning using RandomizedSearchCV."""
+
         search = RandomizedSearchCV(
             estimator=model,
             param_distributions=param_distributions,
@@ -103,7 +103,7 @@ class Model_trainer:
                 "Linear Regression": {}
             }
             
-            # Tune models: perform randomized search on those that have parameters defined
+            # Tuning the models
             tuned_models = {}
             for model_name, model in models.items():
                 if model_name in params and params[model_name]:
@@ -153,7 +153,6 @@ class Model_trainer:
                 final_score = best_model_score
                 logging.info("Selected Best Individual Model as final model")
             
-            # Save the final model
             save_object(
                 filepath=self.model_config.trained_model_file_path,
                 obj=final_model

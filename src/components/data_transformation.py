@@ -15,7 +15,6 @@ from src.logger import logging
 from src.utils import save_object
 
 
-# class for creating a pickle file in artifacts folder
 @dataclass
 class DataTransformation_config:
     preprocessor_obj_file_path = os.path.join('artifacts','preprocessor.pkl')
@@ -82,7 +81,6 @@ class DataTransformation:
             target_column = "math score"
             numerical_columns = ['writing score','reading score']
             
-            # Splitting features and targets
             input_feature_train_df = train_df.drop(columns=[target_column],axis = 1)
             target_feature_train_df = train_df[target_column]
             
@@ -95,7 +93,7 @@ class DataTransformation:
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.fit_transform(input_feature_test_df)
             
-            # This combines the preprocessed features and target variable into a single array for training and testing
+            # This combines the preprocessed features and target variable into a single array for training and testing of the model
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             
