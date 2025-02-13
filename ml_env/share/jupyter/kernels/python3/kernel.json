@@ -1,6 +1,6 @@
 {
  "argv": [
-  "python",
+  "D:/ML_Project/ML/ml_env\\python.exe",
   "-m",
   "ipykernel_launcher",
   "-f",

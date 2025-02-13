@@ -26,25 +26,10 @@ class model_trainer_Config:
 class Model_trainer:
     def __init__(self):
         self.model_config = model_trainer_Config()
-        
-    def randomized_search(self, model, param_distributions, X_train, y_train, n_iter=20):
-
-        search = RandomizedSearchCV(
-            estimator=model,
-            param_distributions=param_distributions,
-            n_iter=n_iter,
-            cv=3,
-            scoring='r2',
-            n_jobs=-1,
-            verbose=2,
-            random_state=42
-        )
-        search.fit(X_train, y_train)
-        logging.info(f"Best parameters for {model.__class__.__name__}: {search.best_params_}")
-        return search.best_estimator_
     
     def initiate_model_trainer(self, train_array, test_array):
         try:
+
             logging.info("Splitting training and test input data")
             
             X_train, y_train, X_test, y_test = (
@@ -102,6 +87,22 @@ class Model_trainer:
                 },
                 "Linear Regression": {}
             }
+
+            def randomized_search(self, model, param_distributions, X_train, y_train, n_iter):
+
+                search = RandomizedSearchCV(
+                    estimator=model,
+                    param_distributions=params[model_name],
+                    n_iter=30,
+                    cv=3,
+                    scoring='r2',
+                    n_jobs=-1,
+                    verbose=1,
+                    random_state=42
+                )
+                search.fit(X_train, y_train)
+                logging.info(f"Best parameters for {model.__class__.__name__}: {search.best_params_}")
+                return search.best_estimator_
             
             # Tuning the models
             tuned_models = {}
@@ -112,57 +113,62 @@ class Model_trainer:
                     tuned_models[model_name] = tuned_model
                     
                 else:
-                    
+                        
                     logging.info(f"Fitting {model_name} with default parameters")
                     model.fit(X_train, y_train)
                     tuned_models[model_name] = model
+                
+                model_report = evaluate_model(
+                    X_train=X_train, y_train=y_train,
+                    X_test=X_test, y_test=y_test,
+                    models=tuned_models,params=params
+                )
             
-            model_report = evaluate_model(
-                X_train=X_train, y_train=y_train,
-                X_test=X_test, y_test=y_test,
-                models=tuned_models,params=params
-            )
+                if model_report is None:
+                    raise Custom_Exception("Model evaluation failed: model_report is None", sys)
+                else:
+
+                    best_model_name = max(model_report, key=model_report.get)
+                    best_model_score = model_report[best_model_name]
+                    best_individual_model = tuned_models[best_model_name]
+                    logging.info(f"Best individual model: {best_model_name} with R2 score: {best_model_score}")
+                    
+                    # Build a stacking ensemble from all tuned models
+                    estimators = [(name, model) for name, model in tuned_models.items()]
+                    stacking_ensemble = StackingRegressor(
+                        estimators=estimators,
+                        final_estimator=LinearRegression(),
+                        cv=3,
+                        n_jobs=-1
+                    )
+                    stacking_ensemble.fit(X_train, y_train)
+                    stacking_score = r2_score(y_test, stacking_ensemble.predict(X_test))
+                    logging.info(f"Stacking Ensemble R2 score: {stacking_score}")
+                    
+                    # Choose the best between the individual best model and the stacking ensemble
+                    if stacking_score > best_model_score:
+                        final_model = stacking_ensemble
+                        final_score = stacking_score
+                        logging.info("Selected Stacking Ensemble as final model")
+                    else:
+                        final_model = best_individual_model
+                        final_score = best_model_score
+                        logging.info("Selected Best Individual Model as final model")
+                    
+                    save_object(
+                    file_path=self.model_trainer_config.trained_model_file_path,
+                    obj=final_model
+                    )
+                    # save_object(
+                    #     filepath='artifacts/preprocessor.pkl',
+                    #     obj=preprocessor
+                    # )
+                    
+                    predicted = final_model.predict(X_test)
+                    final_r2 = r2_score(y_test, predicted)
+                    logging.info(f"Final model R2 score on test set: {final_r2}")
+                    
+                    return final_r2 * 100
             
-            if model_report is None:
-                raise Custom_Exception("Model evaluation failed: model_report is None", sys)
-            
-            best_model_name = max(model_report, key=model_report.get)
-            best_model_score = model_report[best_model_name]
-            best_individual_model = tuned_models[best_model_name]
-            logging.info(f"Best individual model: {best_model_name} with R2 score: {best_model_score}")
-            
-            # Build a stacking ensemble from all tuned models
-            estimators = [(name, model) for name, model in tuned_models.items()]
-            stacking_ensemble = StackingRegressor(
-                estimators=estimators,
-                final_estimator=LinearRegression(),
-                cv=3,
-                n_jobs=-1
-            )
-            stacking_ensemble.fit(X_train, y_train)
-            stacking_score = r2_score(y_test, stacking_ensemble.predict(X_test))
-            logging.info(f"Stacking Ensemble R2 score: {stacking_score}")
-            
-            # Choose the best between the individual best model and the stacking ensemble
-            if stacking_score > best_model_score:
-                final_model = stacking_ensemble
-                final_score = stacking_score
-                logging.info("Selected Stacking Ensemble as final model")
-            else:
-                final_model = best_individual_model
-                final_score = best_model_score
-                logging.info("Selected Best Individual Model as final model")
-            
-            save_object(
-                filepath=self.model_config.trained_model_file_path,
-                obj=final_model
-            )
-            
-            predicted = final_model.predict(X_test)
-            final_r2 = r2_score(y_test, predicted)
-            logging.info(f"Final model R2 score on test set: {final_r2}")
-            
-            return final_r2 * 100
-        
         except Exception as e:
             raise Custom_Exception(e, sys)

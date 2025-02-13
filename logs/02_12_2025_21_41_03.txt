@@ -1,0 +1,8 @@
+[2025-02-12 21:41:03,919] 97 werkzeug - WARNING -  * Debugger is active!
+[2025-02-12 21:41:03,923] 97 werkzeug - INFO -  * Debugger PIN: 145-837-814
+[2025-02-12 21:41:17,094] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 21:41:17] "[35m[1mGET /predictdata HTTP/1.1[0m" 500 -
+[2025-02-12 21:41:17,114] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 21:41:17] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2025-02-12 21:41:17,119] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 21:41:17] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2025-02-12 21:41:17,132] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 21:41:17] "GET /predictdata?__debugger__=yes&cmd=resource&f=console.png&s=wEILnlsJv4KlwOe2NNTR HTTP/1.1" 200 -
+[2025-02-12 21:41:17,140] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 21:41:17] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2025-02-13 23:03:28,007] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\data_transformation.py', reloading

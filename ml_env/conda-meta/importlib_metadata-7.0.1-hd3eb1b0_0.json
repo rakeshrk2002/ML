@@ -1,0 +1,35 @@
+{
+  "build": "hd3eb1b0_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/noarch",
+  "constrains": [],
+  "depends": [
+    "importlib-metadata >=7.0.1,<7.0.2.0a0"
+  ],
+  "extracted_package_dir": "C:\\Users\\rakes\\anaconda3\\pkgs\\importlib_metadata-7.0.1-hd3eb1b0_0",
+  "files": [
+    ".nonadmin"
+  ],
+  "fn": "importlib_metadata-7.0.1-hd3eb1b0_0.conda",
+  "license": "Apache-2.0",
+  "link": {
+    "source": "C:\\Users\\rakes\\anaconda3\\pkgs\\importlib_metadata-7.0.1-hd3eb1b0_0",
+    "type": 1
+  },
+  "md5": "f764ec5ca8c8f808464764c83be0ead4",
+  "name": "importlib_metadata",
+  "noarch": "generic",
+  "package_tarball_full_path": "C:\\Users\\rakes\\anaconda3\\pkgs\\importlib_metadata-7.0.1-hd3eb1b0_0.conda",
+  "package_type": "noarch_generic",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "e58fbebccec386c1c1b71ed79a6a3e9b23892a01e340927bd1283ab34830700f",
+  "size": 8593,
+  "subdir": "noarch",
+  "timestamp": 1704813634000,
+  "url": "https://repo.anaconda.com/pkgs/main/noarch/importlib_metadata-7.0.1-hd3eb1b0_0.conda",
+  "version": "7.0.1"
+}

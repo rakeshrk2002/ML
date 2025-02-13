@@ -1,0 +1,30 @@
+[2025-02-12 20:10:22,481] 26 root - INFO - Entered the data ingestion method
+[2025-02-12 20:10:22,488] 31 root - INFO - Read's the dataset as Dataframe
+[2025-02-12 20:10:22,508] 37 root - INFO - Train Test split initiated
+[2025-02-12 20:10:22,513] 43 root - INFO - Data Ingestion Completed
+[2025-02-12 20:10:22,555] 75 root - INFO - Read train and test data
+[2025-02-12 20:10:22,555] 77 root - INFO - Obtaining preprocessor Object
+[2025-02-12 20:10:22,555] 54 root - INFO - Numerical columns Standard scaler is completed : ['writing score', 'reading score']
+[2025-02-12 20:10:22,555] 55 root - INFO - Categorical columns OneHot encoding is completed : ['gender', 'race/ethnicity', 'parental level of education', 'lunch', 'test preparation course']
+[2025-02-12 20:10:22,558] 90 root - INFO - Applying preprocessing object on training and testing dataset
+[2025-02-12 20:10:22,576] 100 root - INFO - Saved the processing object
+[2025-02-12 20:10:22,577] 48 root - INFO - Splitting training and test input data
+[2025-02-12 20:10:22,577] 110 root - INFO - Performing hyperparameter tuning for Random Forest
+[2025-02-12 20:10:39,589] 43 root - INFO - Best parameters for RandomForestRegressor: {'n_estimators': 100, 'min_samples_split': 5, 'max_depth': 10}
+[2025-02-12 20:10:39,589] 110 root - INFO - Performing hyperparameter tuning for Decision Tree
+[2025-02-12 20:10:39,907] 43 root - INFO - Best parameters for DecisionTreeRegressor: {'min_samples_split': 10, 'max_depth': 5, 'criterion': 'friedman_mse'}
+[2025-02-12 20:10:39,907] 110 root - INFO - Performing hyperparameter tuning for Gradient Boosting
+[2025-02-12 20:10:45,195] 43 root - INFO - Best parameters for GradientBoostingRegressor: {'n_estimators': 50, 'min_samples_split': 10, 'max_depth': 3, 'learning_rate': 0.1}
+[2025-02-12 20:10:45,195] 110 root - INFO - Performing hyperparameter tuning for AdaBoost
+[2025-02-12 20:10:50,366] 43 root - INFO - Best parameters for AdaBoostRegressor: {'n_estimators': 300, 'learning_rate': 0.2}
+[2025-02-12 20:10:50,366] 110 root - INFO - Performing hyperparameter tuning for KNN
+[2025-02-12 20:10:50,557] 43 root - INFO - Best parameters for KNeighborsRegressor: {'weights': 'distance', 'n_neighbors': 11}
+[2025-02-12 20:10:50,557] 116 root - INFO - Fitting Linear Regression with default parameters
+[2025-02-12 20:10:50,559] 110 root - INFO - Performing hyperparameter tuning for Catboost Regressor
+[2025-02-12 20:11:24,760] 43 root - INFO - Best parameters for CatBoostRegressor: {'learning_rate': 0.05, 'iterations': 200, 'depth': 6}
+[2025-02-12 20:11:24,760] 110 root - INFO - Performing hyperparameter tuning for XGBoost
+[2025-02-12 20:11:27,846] 43 root - INFO - Best parameters for XGBRegressor: {'n_estimators': 100, 'max_depth': 3, 'learning_rate': 0.1}
+[2025-02-12 20:12:06,557] 132 root - INFO - Best individual model: Random Forest with R2 score: 0.8396382313926056
+[2025-02-12 20:12:15,340] 144 root - INFO - Stacking Ensemble R2 score: 0.8633839316307323
+[2025-02-12 20:12:15,340] 150 root - INFO - Selected Stacking Ensemble as final model
+[2025-02-12 20:12:15,463] 163 root - INFO - Final model R2 score on test set: 0.8633839316307323

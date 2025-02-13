@@ -27,7 +27,7 @@ class Data_Ingestion:
         
         try:
             
-            df = pd.read_csv(r"C:\Users\018017\OneDrive - Sify Technologies Limited\Documents\ineuron\ML_Project\src\notebook\data\Stud_performance.csv")
+            df = pd.read_csv(r"D:\ML_Project\ML\src\notebook\data\Stud_performance.csv")
             logging.info("Read's the dataset as Dataframe")
             
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
