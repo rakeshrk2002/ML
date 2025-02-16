@@ -1,174 +1,115 @@
+
 import os
 import sys
-import numpy as np
-import pandas as pd
 from dataclasses import dataclass
-from sklearn.linear_model import LinearRegression
+
+from src.exception import Custom_Exception
+from src.logger import logging
+from src.utils import save_object,evaluate_models
+
+from catboost import CatBoostRegressor
 from sklearn.ensemble import (
-    AdaBoostRegressor, GradientBoostingRegressor,
-    RandomForestRegressor, StackingRegressor
+    AdaBoostRegressor,
+    GradientBoostingRegressor,
+    RandomForestRegressor,
 )
+from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
-from catboost import CatBoostRegressor
-from sklearn.model_selection import RandomizedSearchCV
 
-from src.exception import Custom_Exception
-from src.logger import logging
-from src.utils import save_object, evaluate_model
 
 @dataclass
-class model_trainer_Config:
-    trained_model_file_path = os.path.join("artifacts", "model.pkl")
+class ModelTrainerConfig:
+    trained_model_file_path=os.path.join('artifacts', "model.pkl")
 
-class Model_trainer:
-    def __init__(self):
-        self.model_config = model_trainer_Config()
+class ModelTrainer:
+    def __init__(self) -> None:
+        self.model_trainer_config=ModelTrainerConfig()
     
-    def initiate_model_trainer(self, train_array, test_array):
+    def initiate_model_trainer(self,train_array,test_array):
         try:
-
-            logging.info("Splitting training and test input data")
-            
-            X_train, y_train, X_test, y_test = (
-                train_array[:, :-1],
-                train_array[:, -1],
-                test_array[:, :-1],
-                test_array[:, -1]
+            logging.info("Split training and test input data")
+            X_train,y_train,X_test,y_test=(
+                train_array[:,:-1],
+                train_array[:,-1],
+                test_array[:,:-1],
+                test_array[:,-1]
             )
-            
             models = {
                 "Random Forest": RandomForestRegressor(),
                 "Decision Tree": DecisionTreeRegressor(),
                 "Gradient Boosting": GradientBoostingRegressor(),
-                "AdaBoost": AdaBoostRegressor(),
-                "KNN": KNeighborsRegressor(),
                 "Linear Regression": LinearRegression(),
-                "Catboost Regressor": CatBoostRegressor(verbose=0),
-                "XGBoost": XGBRegressor()
+                "XGBRegressor": XGBRegressor(),
+                "CatBoosting Regressor": CatBoostRegressor(verbose=False),
+                "AdaBoost Regressor": AdaBoostRegressor(),
             }
-            
-            params = {
+            params={
                 "Decision Tree": {
-                    'criterion': ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
-                    'max_depth': [None, 5, 10, 20],
-                    'min_samples_split': [2, 5, 10]
+                    'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    # 'splitter':['best','random'],
+                    # 'max_features':['sqrt','log2'],
                 },
-                "Random Forest": {
-                    'n_estimators': [50, 100, 200, 300],
-                    'max_depth': [None, 10, 20, 30],
-                    'min_samples_split': [2, 5, 10]
+                "Random Forest":{
+                    # 'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                 
+                    # 'max_features':['sqrt','log2',None],
+                    'n_estimators': [8,16,32,64,128,256]
                 },
-                "Gradient Boosting": {
-                    'learning_rate': [0.01, 0.05, 0.1, 0.2],
-                    'max_depth': [3, 5, 7, 9],
-                    'n_estimators': [50, 100, 200],
-                    'min_samples_split': [2, 5, 10]
+                "Gradient Boosting":{
+                    # 'loss':['squared_error', 'huber', 'absolute_error', 'quantile'],
+                    'learning_rate':[.1,.01,.05,.001],
+                    'subsample':[0.6,0.7,0.75,0.8,0.85,0.9],
+                    # 'criterion':['squared_error', 'friedman_mse'],
+                    # 'max_features':['auto','sqrt','log2'],
+                    'n_estimators': [8,16,32,64,128,256]
                 },
-                "KNN": {
-                    'n_neighbors': [3, 5, 7, 9, 11],
-                    'weights': ['uniform', 'distance']
+                "Linear Regression":{},
+                "XGBRegressor":{
+                    'learning_rate':[.1,.01,.05,.001],
+                    'n_estimators': [8,16,32,64,128,256]
                 },
-                "XGBoost": {
-                    'learning_rate': [0.01, 0.05, 0.1, 0.2],
-                    'n_estimators': [50, 100, 200, 300],
-                    'max_depth': [3, 5, 7, 9]
-                },
-                "Catboost Regressor": {
-                    'depth': [6, 8, 10],
+                "CatBoosting Regressor":{
+                    'depth': [6,8,10],
                     'learning_rate': [0.01, 0.05, 0.1],
-                    'iterations': [100, 200, 300]
+                    'iterations': [30, 50, 100]
                 },
-                "AdaBoost": {
-                    'n_estimators': [50, 100, 200, 300],
-                    'learning_rate': [0.01, 0.05, 0.1, 0.2]
-                },
-                "Linear Regression": {}
-            }
-
-            def randomized_search(self, model, param_distributions, X_train, y_train, n_iter):
-
-                search = RandomizedSearchCV(
-                    estimator=model,
-                    param_distributions=params[model_name],
-                    n_iter=30,
-                    cv=3,
-                    scoring='r2',
-                    n_jobs=-1,
-                    verbose=1,
-                    random_state=42
-                )
-                search.fit(X_train, y_train)
-                logging.info(f"Best parameters for {model.__class__.__name__}: {search.best_params_}")
-                return search.best_estimator_
-            
-            # Tuning the models
-            tuned_models = {}
-            for model_name, model in models.items():
-                if model_name in params and params[model_name]:
-                    logging.info(f"Performing hyperparameter tuning for {model_name}")
-                    tuned_model = self.randomized_search(model, params[model_name], X_train, y_train, n_iter=30)
-                    tuned_models[model_name] = tuned_model
-                    
-                else:
-                        
-                    logging.info(f"Fitting {model_name} with default parameters")
-                    model.fit(X_train, y_train)
-                    tuned_models[model_name] = model
+                "AdaBoost Regressor":{
+                    'learning_rate':[.1,.01,0.5,.001],
+                    # 'loss':['linear','square','exponential'],
+                    'n_estimators': [8,16,32,64,128,256]
+                }
                 
-                model_report = evaluate_model(
-                    X_train=X_train, y_train=y_train,
-                    X_test=X_test, y_test=y_test,
-                    models=tuned_models,params=params
-                )
+            }
+            model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
+                                             models=models,param=params)
             
-                if model_report is None:
-                    raise Custom_Exception("Model evaluation failed: model_report is None", sys)
-                else:
+            ## To get best model score from dict
+            best_model_score = max(sorted(model_report.values()))
 
-                    best_model_name = max(model_report, key=model_report.get)
-                    best_model_score = model_report[best_model_name]
-                    best_individual_model = tuned_models[best_model_name]
-                    logging.info(f"Best individual model: {best_model_name} with R2 score: {best_model_score}")
-                    
-                    # Build a stacking ensemble from all tuned models
-                    estimators = [(name, model) for name, model in tuned_models.items()]
-                    stacking_ensemble = StackingRegressor(
-                        estimators=estimators,
-                        final_estimator=LinearRegression(),
-                        cv=3,
-                        n_jobs=-1
-                    )
-                    stacking_ensemble.fit(X_train, y_train)
-                    stacking_score = r2_score(y_test, stacking_ensemble.predict(X_test))
-                    logging.info(f"Stacking Ensemble R2 score: {stacking_score}")
-                    
-                    # Choose the best between the individual best model and the stacking ensemble
-                    if stacking_score > best_model_score:
-                        final_model = stacking_ensemble
-                        final_score = stacking_score
-                        logging.info("Selected Stacking Ensemble as final model")
-                    else:
-                        final_model = best_individual_model
-                        final_score = best_model_score
-                        logging.info("Selected Best Individual Model as final model")
-                    
-                    save_object(
-                    file_path=self.model_trainer_config.trained_model_file_path,
-                    obj=final_model
-                    )
-                    # save_object(
-                    #     filepath='artifacts/preprocessor.pkl',
-                    #     obj=preprocessor
-                    # )
-                    
-                    predicted = final_model.predict(X_test)
-                    final_r2 = r2_score(y_test, predicted)
-                    logging.info(f"Final model R2 score on test set: {final_r2}")
-                    
-                    return final_r2 * 100
-            
+            ## To get best model name from dict
+
+            best_model_name = list(model_report.keys())[
+                list(model_report.values()).index(best_model_score)
+            ]
+            best_model = models[best_model_name]
+
+            if best_model_score<0.6:
+                raise Custom_Exception("No best model found")
+            logging.info("Best found model on both training and testing dataset")
+            logging.info(f"The best model achieved an accuracy of {best_model_score:.2f}, utilizing the \"{best_model}\" algorithm.")
+
+            save_object(
+                file_path=self.model_trainer_config.trained_model_file_path,
+                obj=best_model
+            )
+
+            predicted=best_model.predict(X_test)
+
+            r2_square = r2_score(y_test, predicted)
+            return r2_square
+        
         except Exception as e:
-            raise Custom_Exception(e, sys)
+            raise Custom_Exception(e,sys)

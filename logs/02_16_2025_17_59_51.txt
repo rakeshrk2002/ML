@@ -1,0 +1,4 @@
+[2025-02-16 17:59:52,333] 97 werkzeug - WARNING -  * Debugger is active!
+[2025-02-16 17:59:52,336] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
+[2025-02-16 18:00:08,644] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\pipeline\\predict_pipeline.py', reloading
+[2025-02-16 18:00:08,645] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\pipeline\\predict_pipeline.py', reloading

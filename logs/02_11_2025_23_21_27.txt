@@ -1,1 +1,0 @@
-[2025-02-11 23:21:29,293] 26 root - INFO - Entered the data ingestion method

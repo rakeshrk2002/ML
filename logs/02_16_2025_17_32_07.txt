@@ -1,0 +1,6 @@
+[2025-02-16 17:32:07,993] 97 werkzeug - WARNING -  * Debugger is active!
+[2025-02-16 17:32:07,996] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
+[2025-02-16 17:32:42,426] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\model_trainer.py', reloading
+[2025-02-16 17:32:42,427] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\model_trainer.py', reloading
+[2025-02-16 17:32:42,427] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\model_trainer.py', reloading
+[2025-02-16 17:32:42,526] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\model_trainer.py', reloading

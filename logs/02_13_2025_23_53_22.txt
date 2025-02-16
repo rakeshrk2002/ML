@@ -1,6 +1,0 @@
-[2025-02-13 23:53:22,549] 97 werkzeug - WARNING -  * Debugger is active!
-[2025-02-13 23:53:22,554] 97 werkzeug - INFO -  * Debugger PIN: 145-837-814
-[2025-02-13 23:53:30,138] 97 werkzeug - INFO - 192.168.0.111 - - [13/Feb/2025 23:53:30] "[31m[1mGET /predictdata HTTP/1.1[0m" 405 -
-[2025-02-13 23:53:36,205] 97 werkzeug - INFO - 192.168.0.111 - - [13/Feb/2025 23:53:36] "GET / HTTP/1.1" 200 -
-[2025-02-13 23:53:41,550] 97 werkzeug - INFO - 192.168.0.111 - - [13/Feb/2025 23:53:41] "[31m[1mGET /predictdata HTTP/1.1[0m" 405 -
-[2025-02-13 23:53:50,137] 97 werkzeug - INFO - 192.168.0.111 - - [13/Feb/2025 23:53:50] "[33mGET /predict_data HTTP/1.1[0m" 404 -

@@ -1,0 +1,12 @@
+[2025-02-16 17:06:02,164] 97 werkzeug - WARNING -  * Debugger is active!
+[2025-02-16 17:06:02,174] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
+[2025-02-16 17:06:02,520] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\linear_model\\_theil_sen.py', reloading
+[2025-02-16 17:06:02,589] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\compose\\__init__.py', reloading
+[2025-02-16 17:06:02,704] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\compose\\_column_transformer.py', reloading
+[2025-02-16 17:06:02,800] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\pipeline.py', reloading
+[2025-02-16 17:06:02,833] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\utils\\_user_interface.py', reloading
+[2025-02-16 17:06:02,916] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\compose\\_target.py', reloading
+[2025-02-16 17:06:02,957] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\impute\\__init__.py', reloading
+[2025-02-16 17:06:03,021] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\impute\\_base.py', reloading
+[2025-02-16 17:06:03,074] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\impute\\_knn.py', reloading
+[2025-02-16 17:06:03,113] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages\\scikit_learn-1.6.1-py3.9-win-amd64.egg\\sklearn\\neighbors\\__init__.py', reloading

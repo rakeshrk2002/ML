@@ -1,0 +1,14 @@
+[2025-02-16 17:35:14,044] 25 root - INFO - Entered the data ingestion method or component
+[2025-02-16 17:35:14,048] 28 root - INFO - Read the dataset as dataframe
+[2025-02-16 17:35:14,053] 33 root - INFO - Train test split initiated
+[2025-02-16 17:35:14,059] 38 root - INFO - Ingestion of the data has completed
+[2025-02-16 17:35:14,077] 198 root - INFO - Read train and test data completed
+[2025-02-16 17:35:14,077] 200 root - INFO - Obtaining preprocessing object
+[2025-02-16 17:35:14,077] 169 root - INFO - Numerical columns: ['writing score', 'reading score']
+[2025-02-16 17:35:14,077] 178 root - INFO - Categorical columns: ['gender', 'race/ethnicity', 'parental level of education', 'lunch', 'test preparation course']
+[2025-02-16 17:35:14,078] 186 root - INFO - Transformation of the data has completed
+[2025-02-16 17:35:14,079] 212 root - INFO - Applying preprocessing object on training dataframe and testing dataframe.
+[2025-02-16 17:35:14,101] 230 root - INFO - Saved preprocessing object.
+[2025-02-16 17:35:14,102] 33 root - INFO - Split training and test input data
+[2025-02-16 17:37:16,172] 101 root - INFO - Best found model on both training and testing dataset
+[2025-02-16 17:37:16,175] 102 root - INFO - The best model achieved an accuracy of 0.88, utilizing the "LinearRegression()" algorithm.

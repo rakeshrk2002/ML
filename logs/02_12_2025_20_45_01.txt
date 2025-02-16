@@ -1,6 +1,0 @@
-[2025-02-12 20:45:01,611] 97 werkzeug - WARNING -  * Debugger is active!
-[2025-02-12 20:45:01,705] 97 werkzeug - INFO -  * Debugger PIN: 145-837-814
-[2025-02-12 20:45:58,529] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 20:45:58] "GET / HTTP/1.1" 200 -
-[2025-02-12 20:45:58,671] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 20:45:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-[2025-02-12 20:47:07,190] 97 werkzeug - INFO - 127.0.0.1 - - [12/Feb/2025 20:47:07] "[33mGET /predictdata HTTP/1.1[0m" 404 -
-[2025-02-12 20:47:17,214] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\app.py', reloading

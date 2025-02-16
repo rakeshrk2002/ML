@@ -1,0 +1,5 @@
+[2025-02-16 17:05:04,344] 97 werkzeug - WARNING -  * Debugger is active!
+[2025-02-16 17:05:04,358] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
+[2025-02-16 17:05:16,462] 97 werkzeug - INFO - 127.0.0.1 - - [16/Feb/2025 17:05:16] "GET / HTTP/1.1" 200 -
+[2025-02-16 17:05:20,271] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\rakes\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\encodings\\unicode_escape.py', reloading
+[2025-02-16 17:05:20,279] 97 werkzeug - INFO - 127.0.0.1 - - [16/Feb/2025 17:05:20] "GET /predictdata HTTP/1.1" 200 -
