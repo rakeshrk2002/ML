@@ -11,12 +11,15 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
 
+
+# This is a class to create the necessary data's in artifacts folder
 @dataclass
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts', 'train.csv')
     test_data_path: str=os.path.join('artifacts', 'test.csv')
     raw_data_path: str=os.path.join('artifacts', 'data.csv')
 
+# Class for initiating data ingestion to for training model and preprocessing
 class DataIngestion:
     def __init__(self) -> None:
         self.ingestion_config=DataIngestionConfig()

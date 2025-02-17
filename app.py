@@ -29,11 +29,11 @@ def predict_datapoint():
             data = CustomData(
                 gender=request.form.get('gender'),
                 race_ethnicity=request.form.get('race/ethnicity'),  
-                parental_level_of_education=request.form.get('parental_level_of_education'),
+                parental_level_of_education=request.form.get('parental level of education'),
                 lunch=request.form.get('lunch'),
-                test_preparation_course=request.form.get('test_preparation_course'),
-                reading_score=request.form.get('reading_score'), 
-                writing_score=request.form.get('writing_score')
+                test_preparation_course=request.form.get('test preparation course'),
+                reading_score=request.form.get('reading score'), 
+                writing_score=request.form.get('writing score')
             )
             print("Form Data:", request.form)  
         except ValueError as e:
@@ -55,6 +55,8 @@ def predict_datapoint():
             return render_template('home.html', error=f"Prediction failed: {str(e)}")
 
 if __name__ == '__main__':
-    
+
+    print("127.0.0.1:5000")
+
     app.run(host='0.0.0.0', debug=True)
     

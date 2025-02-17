@@ -1,8 +1,0 @@
-[2025-02-16 17:58:12,999] 97 werkzeug - WARNING -  * Debugger is active!
-[2025-02-16 17:58:13,002] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
-[2025-02-16 17:58:24,033] 97 werkzeug - INFO - 127.0.0.1 - - [16/Feb/2025 17:58:24] "GET / HTTP/1.1" 200 -
-[2025-02-16 17:58:28,658] 97 werkzeug - INFO - 127.0.0.1 - - [16/Feb/2025 17:58:28] "GET /predictdata HTTP/1.1" 200 -
-[2025-02-16 17:59:35,981] 97 werkzeug - INFO - 127.0.0.1 - - [16/Feb/2025 17:59:35] "POST /predictdata HTTP/1.1" 200 -
-[2025-02-16 17:59:47,446] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\ml_env\\Lib\\site-packages\\flask\\templating.py', reloading
-[2025-02-16 17:59:47,452] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\ml_env\\Lib\\site-packages\\jinja2\\__init__.py', reloading
-[2025-02-16 17:59:47,453] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\ml_env\\Lib\\site-packages\\jinja2\\environment.py', reloading

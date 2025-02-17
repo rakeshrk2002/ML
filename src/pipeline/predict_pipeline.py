@@ -10,6 +10,7 @@ class PredictPipeline:
     def __init__(self) -> None:
         pass
     
+    #function to predict the math score
     def predict(self, features):
         try:    
             model_path=os.path.join("artifacts","model.pkl")
@@ -23,6 +24,7 @@ class PredictPipeline:
         except Exception as e:
             raise Custom_Exception(e, sys)
 
+# This is a class to get the data as dataframe
 class CustomData:
     def __init__(self,
                  gender: str,

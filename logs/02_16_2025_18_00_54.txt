@@ -1,4 +1,0 @@
-[2025-02-16 18:00:55,032] 97 werkzeug - WARNING -  * Debugger is active!
-[2025-02-16 18:00:55,036] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
-[2025-02-16 18:01:00,077] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\ml_env\\Lib\\site-packages\\catboost-1.2.7-py3.8-win-amd64.egg\\catboost\\__init__.py', reloading
-[2025-02-16 18:01:00,078] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\ml_env\\Lib\\site-packages\\catboost-1.2.7-py3.8-win-amd64.egg\\catboost\\core.py', reloading

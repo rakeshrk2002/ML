@@ -1,5 +1,0 @@
-[2025-02-16 18:01:01,930] 97 werkzeug - WARNING -  * Debugger is active!
-[2025-02-16 18:01:01,933] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
-[2025-02-16 18:01:20,925] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\app.py', reloading
-[2025-02-16 18:01:20,926] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\app.py', reloading
-[2025-02-16 18:01:20,927] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\app.py', reloading

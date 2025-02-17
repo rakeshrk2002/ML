@@ -1,0 +1,7 @@
+[2025-02-17 21:29:32,166] 97 werkzeug - WARNING -  * Debugger is active!
+[2025-02-17 21:29:32,169] 97 werkzeug - INFO -  * Debugger PIN: 359-514-685
+[2025-02-17 21:29:44,815] 97 werkzeug - INFO - 127.0.0.1 - - [17/Feb/2025 21:29:44] "GET / HTTP/1.1" 200 -
+[2025-02-17 21:29:49,373] 97 werkzeug - INFO - 127.0.0.1 - - [17/Feb/2025 21:29:49] "GET /predictdata HTTP/1.1" 200 -
+[2025-02-17 21:30:02,735] 97 werkzeug - INFO - 127.0.0.1 - - [17/Feb/2025 21:30:02] "POST /predictdata HTTP/1.1" 200 -
+[2025-02-17 21:30:46,560] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\model_trainer.py', reloading
+[2025-02-17 21:30:46,562] 97 werkzeug - INFO -  * Detected change in 'D:\\ML_Project\\ML\\src\\components\\model_trainer.py', reloading
